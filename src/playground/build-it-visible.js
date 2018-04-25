@@ -1,26 +1,31 @@
-const app = {
-  title: 'Visibility Toggle',
-  text: 'Lorem ipsum dolor sit amet.',
-  visible: false
-};
+class Visibility extends React.Component {
+  constructor(props) {
+    super(props);
+    this.toggleVisibility = this.toggleVisibility.bind(this);
+    this.state = {
+      title: 'Visibility Toggle',
+      text: 'Lorem ipsum dolor sit amet.',
+      visible: false
+    };
+  }
+  toggleVisibility() {
+    this.setState(state => {
+      return {
+        visible: !state.visible
+      };
+    });
+  }
+  render() {
+    return (
+      <div>
+        <h1>{this.state.title}</h1>
+        <button onClick={this.toggleVisibility}>
+          {this.state.visible ? 'Hide details' : 'Show details'}
+        </button>
+        {this.state.visible && this.state.text}
+      </div>
+    );
+  }
+}
 
-const toggleVisible = () => {
-  app.visible = !app.visible;
-  render();
-};
-
-const appRoot = document.querySelector('#app');
-
-const render = () => {
-  const template = (
-    <div>
-      <h1>{app.title}</h1>
-      <button onClick={toggleVisible}>
-        {app.visible ? 'Hide details' : 'Show details'}
-      </button>
-      {app.visible && <p>{app.text}</p>}
-    </div>
-  );
-  ReactDOM.render(template, appRoot);
-};
-render();
+ReactDOM.render(<Visibility />, document.querySelector('#app'));
