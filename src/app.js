@@ -69,10 +69,11 @@ class IndecisionApp extends React.Component {
 }
 
 const Header = props => {
+  const { title, subtitle } = props;
   return (
     <div>
-      <h1>{props.title}</h1>
-      {props.subtitle && <h2>{props.subtitle}</h2>}
+      <h1>{title}</h1>
+      {subtitle && <h2>{subtitle}</h2>}
     </div>
   );
 };
@@ -81,24 +82,26 @@ Header.defaultProps = {
 };
 
 const Action = props => {
+  const { hasOptions, handlePick } = props;
   return (
-    <button disabled={!props.hasOptions} onClick={props.handlePick}>
+    <button disabled={!hasOptions} onClick={handlePick}>
       What should I do?
     </button>
   );
 };
 
 const Options = props => {
+  const { handleDeleteOption, handleDeleteOptions, options } = props;
   return (
     <div>
-      <button onClick={props.handleDeleteOptions}>Remove All</button>
-      {!props.options.length && <p>Please add an option to get started!</p>}
+      <button onClick={handleDeleteOptions}>Remove All</button>
+      {!options.length && <p>Please add an option to get started!</p>}
       <ol>
-        {props.options.map((option, i) => (
+        {options.map(option => (
           <Option
             option={option}
-            key={i + 1}
-            handleDeleteOption={props.handleDeleteOption}
+            key={option}
+            handleDeleteOption={handleDeleteOption}
           />
         ))}
       </ol>
@@ -107,12 +110,13 @@ const Options = props => {
 };
 
 const Option = props => {
+  const { option, handleDeleteOption } = props;
   return (
     <li>
-      {props.option}
+      {option}
       <button
         onClick={() => {
-          props.handleDeleteOption(props.option);
+          handleDeleteOption(option);
         }}
       >
         Remove
@@ -142,9 +146,10 @@ class AddOption extends React.Component {
     }
   }
   render() {
+    const { state, handleAddOption } = this;
     return (
-      <form onSubmit={this.handleAddOption}>
-        {this.state.error && <p>{this.state.error}</p>}
+      <form onSubmit={handleAddOption}>
+        {state.error && <p>{state.error}</p>}
         <input autoFocus type="text" name="option" />
         <button>Add Option</button>
       </form>
