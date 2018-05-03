@@ -1,0 +1,20 @@
+.option
+  display: flex
+  justify-content: space-between
+  padding: $l-size $m-size
+  border-bottom: 1px solid lighten($light-blue, 10%)
+  &__text
+    color: white
+    font-weight: 500
+    font-size: 2rem
+    margin: 0
+    margin-right: $s-size
+    word-break: break-all
+  &--done
+    .option__text
+      text-decoration: line-through
+
+@media (max-width: $desktop)
+  .option
+    &__text
+      font-size: $m-size

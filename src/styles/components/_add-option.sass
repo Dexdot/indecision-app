@@ -1,0 +1,25 @@
+.add-option
+  &__error
+    color: $off-white
+    font-style: italic
+    padding: 0 $m-size
+    margin: $m-size 0 0 0
+  &__form
+    display: flex
+    flex-direction: row
+    padding: $m-size
+  &__input
+    color: $off-white
+    background: $dark-blue
+    border: none
+    border-bottom: 0.3rem solid darken($dark-blue, 10%)
+    margin: 0 $s-size 0 0
+    padding: $s-size
+    flex-grow: 1
+
+@media (max-width: $desktop)
+  .add-option
+    &__form
+      flex-direction: column
+    &__input
+      margin: 0 0 $s-size 0      
