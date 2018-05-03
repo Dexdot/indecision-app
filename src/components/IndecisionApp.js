@@ -8,7 +8,7 @@ import Header from './Header';
 
 export default class IndecisionApp extends React.Component {
   state = {
-    subtitle: 'Put your life in the hands of a computer',
+    subtitle: 'Звучит неплохо',
     options: [],
     selectedOption: undefined
   };
@@ -38,6 +38,9 @@ export default class IndecisionApp extends React.Component {
   };
   handleDeleteOptions = () => {
     this.setState(() => ({ options: [] }));
+    const input = document.querySelector('.add-option__input');
+    input.value = '';
+    input.focus();
   };
   handleDeleteOption = optionToRemove => {
     this.setState(state => ({
@@ -57,9 +60,9 @@ export default class IndecisionApp extends React.Component {
   };
   handleAddOption = option => {
     if (!option) {
-      return 'Enter valid value to add option';
+      return 'Ага хуй тебе';
     } else if (this.hasOption(option)) {
-      return 'This option already exists';
+      return 'Не повторяйся';
     } else {
       this.setState(state => ({
         options: [...state.options, { text: option, done: false }]

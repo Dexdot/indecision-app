@@ -13,9 +13,10 @@ export default class Option extends React.Component {
     const { state, props, toggleDone } = this;
     return (
       <div className={`option ${state.done ? 'option--done' : ''}`}>
-        <li onClick={toggleDone}>
+        <li>
           <p className="option__text">
-            {state.count}. {state.text}
+            {/* {state.count}. {state.text} */}
+            {state.text}
           </p>
         </li>
         <button
@@ -24,7 +25,7 @@ export default class Option extends React.Component {
             props.handleDeleteOption(state.text);
           }}
         >
-          Remove
+          я сделяль
         </button>
       </div>
     );

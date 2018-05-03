@@ -27,7 +27,7 @@ export default class AddOption extends React.Component {
             type="text"
             name="option"
           />
-          <button className="button">Add Option</button>
+          <button className="button">Гоу</button>
         </form>
       </div>
     );
